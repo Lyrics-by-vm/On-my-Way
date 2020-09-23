@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src= 
+    "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"> 
+        </script> 
+      <style> 
+      
+        img{ 
+            height:140px; 
+                width:140px;  
+        } 
+        h1{ 
+        color: #32a852; 
+        } 
+        .mode { 
+            float:right; 
+        } 
+        .change { 
+            cursor: pointer; 
+            border: 1px solid #555; 
+            border-radius: 40%; 
+            width: 20px; 
+            text-align: center; 
+            padding: 5px; 
+            margin-left: 8px; 
+        } 
+        .dark{ 
+            background-color: #222; 
+            color: #e6e6e6; 
+        } 
+        /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+
+
+body.dark {
+	background: #292C35;
+}
+
+.checkbox {
+	opacity: 0;
+	position: absolute;
+}
+
+.label {
+	background-color: blue;
+	border-radius: 50px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px;
+	position: relative;
+	height: 26px;
+	width: 50px;
+	transform: scale(1.5);
+}
+
+.label .ball {
+	background-color: #fff;
+	border-radius: 50%;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	height: 22px;
+	width: 22px;
+	transform: translateX(0px);
+	transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+	transform: translateX(24px);
+}
+
+
+.fa-moon {
+	color: #f1c40f;
+}
+
+.fa-sun {
+	color: #f39c12;
+}
+
+
+/* SOCIAL PANEL CSS */
+.social-panel-container {
+	position: fixed;
+	right: 0;
+	bottom: 80px;
+	transform: translateX(100%);
+	transition: transform 0.4s ease-in-out;
+}
+
+.social-panel-container.visible {
+	transform: translateX(-10px);
+}
+
+.social-panel {	
+	background-color: #fff;
+	border-radius: 16px;
+	box-shadow: 0 16px 31px -17px rgba(0,31,97,0.6);
+	border: 5px solid #001F61;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Muli';
+	position: relative;
+	height: 169px;	
+	width: 370px;
+	max-width: calc(100% - 10px);
+}
+
+.social-panel button.close-btn {
+	border: 0;
+	color: #97A5CE;
+	cursor: pointer;
+	font-size: 20px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+
+.social-panel button.close-btn:focus {
+	outline: none;
+}
+
+.social-panel p {
+	background-color: #001F61;
+	border-radius: 0 0 10px 10px;
+	color: #fff;
+	font-size: 14px;
+	line-height: 18px;
+	padding: 2px 17px 6px;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin: 0;
+	transform: translateX(-50%);
+	text-align: center;
+	width: 235px;
+}
+
+.social-panel p i {
+	margin: 0 5px;
+}
+
+.social-panel p a {
+	color: #FF7500;
+	text-decoration: none;
+}
+
+.social-panel h4 {
+	margin: 20px 0;
+	color: #97A5CE;	
+	font-family: 'Muli';	
+	font-size: 14px;	
+	line-height: 18px;
+	text-transform: uppercase;
+}
+
+.social-panel ul {
+	display: flex;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.social-panel ul li {
+	margin: 0 10px;
+}
+
+.social-panel ul li a {
+	border: 1px solid #DCE1F2;
+	border-radius: 50%;
+	color: #001F61;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+	width: 50px;
+	text-decoration: none;
+}
+
+.social-panel ul li a:hover {
+	border-color: #FF6A00;
+	box-shadow: 0 9px 12px -9px #FF6A00;
+}
+
+.floating-btn {
+	border-radius: 26.5px;
+	background-color: #001F61;
+	border: 1px solid #001F61;
+	box-shadow: 0 16px 22px -17px #03153B;
+	color: #fff;
+	cursor: pointer;
+	font-size: 16px;
+	line-height: 20px;
+	padding: 12px 20px;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 999;
+}
+
+.floating-btn:hover {
+	background-color: #ffffff;
+	color: #001F61;
+}
+
+.floating-btn:focus {
+	outline: none;
+}
+
+.floating-text {
+	background-color: #001F61;
+	border-radius: 10px 10px 0 0;
+	color: #fff;
+	font-family: 'Muli';
+	padding: 7px 15px;
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	z-index: 998;
+}
+
+.floating-text a {
+	color: #FF7500;
+	text-decoration: none;
+}
+
+@media screen and (max-width: 480px) {
+
+	.social-panel-container.visible {
+		transform: translateX(0px);
+	}
+	
+	.floating-btn {
+		right: 10px;
+	}
+}
+.main{
+    font-size: 50px;
+}
+.main1{
+    font-size: 70px;
+}
+.move{
+    height: 300px;
+    color: white;
+ 
+}
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+html, body {
+  height: 100%;
+}
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 150%;
+  line-height: 1.4;
+}
+body {
+background-image: url(https://i.pinimg.com/originals/8b/2d/07/8b2d0745d8038829c8b5650dcb6b60bc.gif);
+background-size: cover;
+}
+
+.viewport-header {
+  position: relative;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-family: 'Syncopate', sans-serif;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3vw;
+  line-height: 1.2;
+  font-size: 3vw;
+  text-align: center;
+  span {
+    display: block;
+    font-size: 10vw;
+    letter-spacing: -1.3vw;
+  }
+}
+
+main {
+  background: rgba(black, 0.66);
+  color: white;
+  position: relative;
+  padding: 1rem;
+  p {
+    max-width: 600px;
+    margin: 1rem auto;
+  }
+}
+
+    </style>     
+</head>
+<body>
+     
+   
+   
+   
+<center>
+  <span class="main1">  🅰🅻🅰🅽 🆆🅰🅻🅺🅴🆁 </span>
+</center>
+
+<center>******************************************************************************</center>
+<center>
+ <span class="main">   𝔬𝔫 𝔪𝔶 𝔴𝔞𝔶  </span>
+</center>
+
+            <div>
+                <input type="checkbox" class="checkbox" id="chk" />
+                <label class="label" for="chk">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <div class="ball"></div>
+                </label>
+            </div>
+            
+          
+           
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <embed src="alan.mp3" loop="true" autostart="true" width="2" height="0">
+
+
+        <marquee behavior="" direction="up" scrollamount="2" class="move" >
+            <center>
+    I'm sorry but<br>
+Don't wanna talk, I need a moment before I go<br>
+It's nothing personal<br>
+I draw the blinds
+They don't need to see me cry<br>
+'Cause even if they understand
+They don't understand<br>
+So then when I'm finished<br>
+I'm all 'bout my business and ready to save the world<br>
+I'm taking my misery<br>
+Make it my bitch; can't be everyone's favorite girl<br>
+So take aim and fire away<br>
+I've never been so wide awake
+No, nobody but me can keep me safe<br>
+And I'm on my way<br>
+The blood moon is on the rise
+The fire burning in my eyes<br>
+No, nobody but me can keep me safe<br>
+And I'm on my way<br>
+Lo siento mucho (Farru), pero me voy (Eh)<br>
+Porque a tu lado me di cuenta que nada soy (Eh-ey)<br>
+Y me cansé de luchar y de guerrear en vano<br>
+De estar en la línea de fuego y de meter la mano<br>
+Acepto mis errore', también soy humano<br>
+Y tú no ve' que lo hago porque te amo (Pum-pum-pum-pum)<br>
+Pero ya (Ya) no tengo más na' que hacer aquí (Aquí)<br>
+Me voy, llegó la hora 'e partir (Partir)<br>
+De mi propio camino, seguir lejos de ti<br>
+So take aim and fire away<br>
+I've never been so wide awake<br>
+No, nobody but me can keep me safe<br>
+And I'm on my way<br>
+The blood moon is on the rise (Is on the rise, na-na)<br>
+The fire burning in my eyes (The fire burning in my eyes)<br>
+No, nobody but me can keep me safe<br>
+And I'm on my way<br>
+I'm on my way<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Everybody keep me safe<br>
+Everybody keep me safe<br>
+Everybody keep me safe<br>
+Everybody, everybody on my way<br>
+So take aim and fire away<br>
+I've never been so wide awake<br>
+No, nobody but me can keep me safe<br>
+And I'm on my way<br>
+The blood moon is on the rise<br>
+No, nobody but me can keep me safe<br>
+And I'm on my way<br>
+
+</center>
+</marquee>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<embed src="/wav.mp3" autostart="false" type="audio/mpeg" loop="false" width="0" height="0" id="beep" enablejavascript="true" />
+<asp:LinkButton ID="lbtnExit" runat="server" OnClick="lbtnExit_Click" OnClientClick="PlaySound('beep')" CssClass="btn btn-lg btn-danger" Text="Exit <i class='fa fa-sign-out' style='font-size: 40px'></i>"></asp:LinkButton>
+
+
+
+
+<script> 
+    $( ".change" ).on("click", function() { 
+        if( $( "body" ).hasClass( "dark" )) { 
+            $( "body" ).removeClass( "dark" ); 
+            $( ".change" ).text( "OFF" ); 
+        } else { 
+            $( "body" ).addClass( "dark" ); 
+            $( ".change" ).text( "ON" ); 
+        } 
+    }); 
+    const chk = document.getElementById('chk');
+
+chk.addEventListener('change', () => {
+	document.body.classList.toggle('dark');
+});
+
+// SOCIAL PANEL JS
+const floating_btn = document.querySelector('.floating-btn');
+const close_btn = document.querySelector('.close-btn');
+const social_panel_container = document.querySelector('.social-panel-container');
+
+floating_btn.addEventListener('click', () => {
+	social_panel_container.classList.toggle('visible')
+});
+
+close_btn.addEventListener('click', () => {
+	social_panel_container.classList.remove('visible')
+});
+function PlaySound(soundObj) {
+        var sound = document.getElementById(chk);
+        sound.Play();
+    }
+</script> 
+</body>
+</html>
